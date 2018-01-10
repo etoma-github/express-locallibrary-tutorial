@@ -19,7 +19,8 @@ app.use(helmet());
 //setting up database and connection
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://etoma:etoma2018!@ds135547.mlab.com:35547/local_library_etoma';
+var mongoDB = process.env.MONGODB_URI || 'mongodb://etoma:etoma2018!@ds135547.mlab.com:35547/local_library_etoma';
+
 mongoose.connect(mongoDB, {
     useMongoClient: true
 });

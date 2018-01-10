@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each author in author_list
+    li 
+      a(href=author.url) #{author.name} - 
+      if author.date_of_birth != NULL || author.date_of_death != NULL
+       | (#{author.format_dob}) - (#{author.format_dod})
+      else if author.date_of_birth != NULL
+       | (#{author.format_dob}) - ()
+      else if author.date_of_death != NULL
+       | () - (#{author.format_dod})
+      else
+       | No date of birth/date information
+  else
+    li There are no authors.
